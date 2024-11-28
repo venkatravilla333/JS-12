@@ -177,4 +177,81 @@
 // test2()
 
 
+//hoisting
 
+//all variables
+
+// console.log(a)
+// var a = 'sachin'
+// const a = 'sachin'
+// console.log(a)
+
+// console.log(b)
+// var b = 40
+// console.log(b)
+
+// console.log(c)
+// var c = true
+// console.log(c)
+
+// console.log(d)
+// var d
+// console.log(d)
+
+// console.log(e)
+// var e = null
+// console.log(e)
+
+// console.log(f)
+// var f = {
+//   name: 'sachin',
+//   age: 40
+// }
+// console.log(f)
+
+// console.log(g)
+// var g = [1, 2, 3]
+// console.log(g)
+
+// // console.log(h)
+// h()
+// let h = function test() {
+//   console.log('named')
+// }
+// h()
+// console.log(h)
+
+// console.log(i)
+// var i = function () {
+//   console.log('Anonymous')
+// }
+// console.log(i)
+
+// console.log(j)
+// var j = () => {
+//   console.log('arrow')
+// }
+// console.log(j)
+
+
+// //function declaration
+// console.log(declare)
+// declare()
+// function declare() {
+//   console.log('declare')
+// }
+// console.log(declare)
+// declare()
+
+
+
+// var a = 1
+// console.log(a) 
+
+// console.log(a) 
+// function test() {
+//   // console.log(a) 
+//   a = 10
+//   console.log(a) //10
+// }
+// test()
