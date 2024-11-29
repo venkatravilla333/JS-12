@@ -246,12 +246,119 @@
 
 
 // var a = 1
-// console.log(a) 
+// console.log(a)
 
-// console.log(a) 
+// console.log(a)
 // function test() {
-//   // console.log(a) 
+//   // console.log(a)
 //   a = 10
 //   console.log(a) //10
 // }
 // test()
+
+
+//var vs let vs const
+
+//re-declaration
+
+// var a = 10
+// console.log(a)
+// console.log(a)
+
+// // var a = 100
+// // let a = 100
+// const a = 100
+// console.log(a)
+// console.log(a)
+
+//re-assigment
+
+// var a = 10
+// let a = 10
+// const a = 10
+// console.log(a)
+
+// a = 100
+
+// console.log(a)
+
+//initialization
+
+// var a
+// let a
+// const a
+// console.log(a)
+
+//closure
+
+// function outer() {
+//   var a = 100
+//  return function inner() {
+//     console.log(a)
+//   }
+// }
+
+// var innerFun = outer()
+// innerFun()
+
+
+//IIFE
+
+// (function test() {
+//   var a = 100
+//   console.log(a)
+// })()
+// console.log(a)
+
+//function currying
+
+//without currying
+
+// function sum(a, b, c) {
+  
+//   var sum = a + b + c
+//   console.log(sum)
+// }
+
+// sum(1,2,3)
+
+//without currying
+
+// function funA(a) {
+//  return function funB(b) {
+//   return  function funC(c) {
+//       var sum = a + b + c
+//       console.log(sum)
+//     }
+    
+//   }
+  
+// }
+// funA(1)(2)(3)
+
+// function calPrice(price, dis) {
+
+//   var disAmount = price * dis
+//   console.log(disAmount)
+  
+// }
+
+// calPrice(1000, .1)
+// calPrice(1000, .2)
+// calPrice(1000, .3)
+// calPrice(1000, .4)
+// calPrice(1000, .5)
+
+// function calPrice(price) {
+//   return function calDis(dis) {
+//     var disAmount = price * dis
+//     console.log(disAmount)
+//   }
+// }
+
+// var calDis = calPrice(1000)
+// calDis(.1)
+// calDis(.2)
+// calDis(.3)
+// calDis(.4)
+// calDis(.5)
