@@ -362,3 +362,67 @@
 // calDis(.3)
 // calDis(.4)
 // calDis(.5)
+
+
+//first class functions
+
+// var a = (fun) => {
+//   console.log(fun)
+//   return function inner() {
+    
+//   }
+  
+// }
+// a(function test(){})
+
+// heigher order function
+
+// function Hof(cb) {
+//   console.log('hof')
+//   cb()
+//   return function inner() {
+//     console.log('inner')
+//   }
+// }
+
+// var inner = Hof(function cb() {
+//   console.log('callback fun')
+// })
+
+// inner()
+
+// pure function
+
+// function pureFun(a, b, c) {
+//   console.log(a + b + c)
+  
+// }
+// pureFun(1, 2, 3)
+
+//impure function
+
+// function impureFun(a, b, c) {
+//   let d = Math.random() * 100
+//   console.log(d)
+//   console.log(a + b + c + d)
+  
+// }
+// impureFun(1, 2, 3)
+
+
+// recursion function
+
+
+// function factorial(n) {
+//   if (n >= 1) {
+//     console.log('calling')
+//     return n * factorial(n - 1)
+//   } else {
+//     return 1
+//   }
+  
+// }
+// var result = factorial(10);
+// console.log(result)
+
+
