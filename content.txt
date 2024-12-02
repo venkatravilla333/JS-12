@@ -237,3 +237,450 @@ We use arithmatic operators to perform some mathematical operations.
      When used, it converts a true value to false and vice versa.
    
      ! is the logical NOT operator, used for negating boolean values.
+
+
+6) Control statements
+=====================
+
+We use control statements to develop some logic or functionality when we have multiple conditions.
+
+1) if else
+----------
+
+ - In JavaScript, the if...else statement is used for conditional execution of code. It allows        you to perform different actions based on a specific condition.
+ 
+   The syntax of the if...else statement is as follows:
+
+  if (condition) {
+   // Code block to be executed if the condition is true
+   } else {
+   // Code block to be executed if the condition is false
+   }
+
+ const num = 10;
+
+ if (num > 0) {
+  console.log("Positive");
+ } else if (num < 0) {
+  console.log("Negative");
+ } else {
+  console.log("Zero");
+ }
+
+
+
+2) switch case (It does not work for step value)
+--------------
+
+ - In JavaScript, the switch statement is another way to perform conditional excution of code based on the value of an expression. It is often used as an alternative to multiple if...else statements.
+
+ - The switch statement evaluates an expression once and then matches the value of the expression to a case label. If a matching case label is found, the corresponding block of code is executed.
+
+   switch (expression) {
+     case value1:
+     // Code to be executed if the expression matches value1
+     break;
+     case value2:
+     // Code to be executed if the expression matches value2
+     break;
+     // Add more cases as needed
+     default:
+     // Code to be executed if none of the cases match the expression
+     break;
+    }
+
+  Ex:
+
+  const dayOfWeek = 3;
+
+  switch (dayOfWeek) {
+   case 1:
+    console.log("Monday");
+    break;
+   case 2:
+    console.log("Tuesday");
+    break;
+   case 3:
+    console.log("Wednesday");
+    break;
+   case 4:
+    console.log("Thursday");
+    break;
+   case 5:
+    console.log("Friday");
+    break;
+   case 6:
+    console.log("Saturday");
+    break;
+   case 7:
+    console.log("Sunday");
+    break;
+   default:
+    console.log("Invalid day");
+  }
+
+
+
+
+7) Loops
+========
+
+ - We use loops to do same task agin and again simply. 
+ - We use loops to access memory value multiple times in an application. 
+
+
+Conditinal Loops
+----------------
+
+1) for loop:
+   -------- 
+
+In JavaScript, a for loop is used to execute a block of code repeatedly for a specified number of times.
+
+2) while loop:
+   ----------
+ 
+In JavaScript, a while loop is used to execute a block of code repeatedly as long as a specified condition is true. The loop continues until the condition evaluates to false.
+
+3) do while loop:
+   ------------- 
+
+In JavaScript, a do-while loop is similar to a while loop, but with a slight difference. The primary difference is that in a do-while loop, the loop body is executed at least once before the loop condition is checked. 
+This ensures that the loop body is executed at least once, regardless of whether the condition is initially true or false. The do-while
+
+4) infinity loop:
+   -------------
+
+An infinite loop in JavaScript is a loop that runs infinitely, continuously executing the same code block without ever stopping. This usually happens when the loop condition always evaluates to true
+
+**break=> by using Break keyword we can break the loop and make exit the loop.
+
+**continue=> by using continue keyword we can make jump the loop.
+
+
+Non conditional loops
+---------------------
+
+5) for in loop:
+   -----------
+ 
+We use this loop to iterate keys in object.
+In JavaScript, the for...in loop is used to iterate over the enumerable properties of an object. It allows you to loop through the keys (property names) of an object and access their corresponding values.
+
+6) for of loop:
+   -----------
+
+In JavaScript, the for...of loop is used to iterate over the values of iterable objects(array/string object/set/map/arguments object/generator object/)..  It provides an easy and concise way to loop through arrays, strings, sets, maps, and other objects that are iterable. 
+
+Note:
+---- 
+
+- It's important to note that the for...in loop should be used for iterating over object properties. If you want to loop through elements of an array, it is recommended to use the for...of loop or a simple for loop with an index.
+- keep in mind that the for...of loop is not suitable for iterating over regular objects   (objects created with {}) since they are not iterable by default. For iterating through object properties, you should use the for...in loop. 
+
+
+
+
+8) Funtions
+===========
+
+1) What is function?
+
+  =>Function is a block of code which is used to do some task and return value. 
+  =>It stores multiple values in functional scope. 
+  =>For every function call seperate excution context will be created. 
+    For every excution context there are memory creation phase and code excution phase.
+
+2) How can we define function?
+
+    1) Function declaration
+
+    2) Function expression
+   
+          1) named fucntion expression
+          2) anonymous function expression
+          3) arrow function (ES-6)
+   
+3) parameters vs arguments
+
+ Parameters
+ ---------
+
+ - Parameters are the placeholders or variables defined in the function's declaration.
+ - They are like local variables that store the values passed to the function when it is called.
+ - They are defined within the function's parentheses in the function declaration and serve as              placeholders for the arguments that will be provided when the function is called.
+
+ Arguments
+ ---------
+ - Arguments are the actual values passed to a function when it is called.
+ - They represent the data that you want to work with within the function.
+ - Arguments are provided in the function call and are placed inside the parentheses.
+
+
+4) what is default parameter
+   
+ - Default parameters were introduced in ECMAScript 6 (ES6).
+ - To define default parameters in a function, you assign a default value to a parameter in the function's declaration.
+ - Default parameters in JavaScript allow you to specify default values for function parameters.
+
+5) Varying no of parameters or arguments
+
+   If we have varying no of params and arguments then we have to handle with below concepts.
+
+   => arguments object (ES-5)
+      -----------------------
+      It takes all values at a time and stores in memory.
+      This is available in all functions except arrow function.
+      arguments object is an iterable object, it has symbol.iterator() method.
+
+   => rest parameter (ES-6)
+      ---------------------
+      It starts with ...
+      It takes all values and stores in array.
+      It should be last parameter in parameter list.
+          
+
+6) Scope
+
+  1) Global scope
+  2) Function / local scope
+  3) Block scope
+
+  Note:
+  ---- 
+  1) var is functionl scope
+  2) let, const is block scope
+
+
+-In Js, "scope" refers to the context in which variables, functions are stored and can be accessed. 
+-The scope determines the accessability and lifetime of variables and functions.
+-Every execution context will create a new scope.
+-Every function call will create new execution context. 
+
+JavaScript has two main types of scope:
+
+Global Scope:
+------------
+
+Variables declared or stored outside of any function or block have global scope. 
+They can be accessed from any part of the code, including inside functions and blocks.
+
+Local Scope:
+-----------
+
+Variables declared or stored within a function or a block have local scope. They are only accessible within that specific function or block.
+
+Note: 
+
+Local variables take precedence over global variables if they have same name.
+
+Function scope, which means that variables declared with var are only scoped within the function where they are defined.
+ 
+However, with the introduction of let and const in ES6, block scope was introduced. Variables declared with let or const are scoped to the nearest enclosing block (defined by curly braces {}).
+
+
+
+7) Hoisting:
+
+  => Hoisting is default behaviour of javascript of moving all variable declarations and function declarations to top of current scope.
+  
+  => Hoisting lets you allow to access memory value even before execution of code.
+
+In JavaScript, both let and const declarations are hoisted, but they behave differently compared to var declarations.
+
+When you declare a variable using var, it gets hoisted to the top of its scope and is initialized with undefined. However, let and const are also hoisted to the top of their scope, but they are not initialized. This means that you cannot access them before the actual declaration (you'll get a ReferenceError), which is known as the "temporal dead zone."
+
+console.log(x); // undefined
+var x = 5;
+
+console.log(y); // ReferenceError: 
+let y = 10;
+
+console.log(z); // ReferenceError: z 
+const z = 15;
+
+In the above example, x is declared using var, so it gets hoisted and initialized with undefined. y and z are declared using let and const, respectively. While they are hoisted, accessing them before the actual declaration results in a ReferenceError due to the temporal dead zone.
+
+
+both let and const declarations are hoisted in JavaScript. However, unlike var, they are not initialized with undefined. Instead, they enter a "temporal dead zone" until their declaration is encountered in the code. Attempting to access a variable declared with let or const before its declaration will result in a ReferenceError due to being in this temporal dead zone. This behavior ensures that variables declared with let or const are not accessible before they are defined in the code execution flow.
+
+
+8) var vs let vs const
+
+                               var                   let                       const
+                               ---                   ---                       -----
+         
+   1) scope                   functional             block                     block
+
+   2) hoisting                yes                    yes but differently       yes but differently
+
+   3) re-declaration          yes                    no                        no
+
+   4) re-assignment           yes                    yes                       no
+
+   5) initialization          no need                no need                   need  
+
+
+9) Closure:
+
+  =>Closure is a concept in js, it allows to inner function to access outer scope variables even after the outer function execution content is over.
+  
+
+10) "This" key word
+
+  - This refers an object.
+
+     Which Object?
+
+     It depends upon scenario. where you are asking 'this'.
+
+  => Regular function scenario.
+  => Constructor function scenario.
+  => Method in object scenario.
+
+11) Changing of "this" reference.
+   
+We can change reference of "this" by using below methods.
+
+Arrow functions do not have their own this context; instead, they inherit this from the lexical context. 
+
+So, the use of this in an arrow function will reference the this value of the enclosing lexical scope, whether it's the global scope (e.g., window in a browser) or a function scope.
+
+In the case of arrow functions, if they are defined within another function, they inherit the this value from that surrounding function's context, not from the context where they are called.
+
+    
+    ES-5 
+    ----
+
+   1) call method =>  call method changes this reference, we can pass any no of arguments to function.
+
+   2) apply method => apply method changes this reference, we have to pass all arguments in array.
+
+   3) bind method =>  Same as call method but it does not call function, it returns function                             reference we have to call function again.
+
+   ES-6
+   ----
+
+   4) arrow function => This is the ultimate approach for changing this reference. Arrow funtion get the inherited this value from parent function.
+
+
+
+In JavaScript, when you use an arrow function within a constructor function, the this reference in the arrow function will still refer to the surrounding lexical context rather than the instance of the object created by the constructor.
+
+function Person(name) {
+  this.name = name;
+
+  // Arrow function within the constructor
+
+  this.printName = () => {
+    console.log("My name is " + this.name);
+  };
+}
+
+const person = new Person("sachin");
+person.printName(); // Outputs: My name is sachin
+
+
+printName is an arrow function defined within the constructor Person.
+
+When printName is called on an instance of Person (person in this case), this.name still correctly refers to the name property of the instance created (sachin in this case). This is because arrow functions inherit the this value from their surrounding lexical context, which in this case is the constructor function Person.
+So, to answer your question, the this reference in an arrow function within a constructor function in JavaScript still points to the same this as the constructor function itself, meaning it refers to the instance being created by the constructor.
+
+
+
+1) IIFE (Immediately Invocable Function Expression) (ES-5)
+-------
+
+    =>An IIFE is a way to excute functions immediately as soon as they are created.
+    =>The most usecase of an IIFE is to restrict the scope of variables to local so
+      that they don't pollute the global context(scope).
+    =>It helps in making our variables and methods private.
+    =>Any function or variable defined inside IIFE can not be accessed outside of
+      the IIFE block, thus preventing global scope from getting polluted.
+    =>It's often used to create private variables and functions.
+ 
+2) Function currying?
+--------------------
+
+  =>Function currying is a technique of trasforming (converting) a function with multiple parameters into multiple functions with single parameter.
+  =>It helps to avoid passing same value again and again.
+
+
+3) first class function?
+------------------------
+
+  =>A programming language is said to have First-class functions when functions in that language are treated like any other variable. 
+  =>For example, in such language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+
+
+4) heigher order function?
+--------------------------
+  
+  =>A function that receives another function as an argument or that returns a new function or both is called Higher-order function. Higher-order functions are only possible because of the First-class functions.
+
+
+5) pure function? 
+-----------------
+
+   =>Pure function always returns the same result if the same arguments are passed in. 
+   =>It does not depend on any state, or data, change during a program's execution. It must only depend on its input arguments. 
+   =>They do not have any side effects like network or database calls and do not modify the arguments which are passed to them.
+   =>We can predict the output from pure function.
+
+   
+6) impure function?
+-------------------
+
+  =>Any function that changes the internal state of one of its arguments or the value of some external variable is an impure function. 
+  =>They may have any side effects like network or database calls and it may modify the arguments which are passed to them.
+  =>We can not predict output from impure function.
+
+
+7) Recursion function:
+---------------------
+
+ - A function that calls itself is recursion. Recursion in JavaScript is a recursive call of the function to itself, where the function calls itself, again and again, (recursively) until given    condition becomes false.
+
+calculate factorial:
+
+function factorial(n) {
+  if (n <= 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+let result = factorial(5);
+console.log(result);
+
+
+
+
+
+9) Objects
+==========
+
+1) What is an object?
+
+ - In JavaScript, an object is a reference data type that stores a collection of related data and functionality. 
+ - It is a container for key-value pairs, where each key is a unique identifier and each value can be of any data type, including other objects, arrays, functions, primitives (such as numbers, strings, and booleans)
+ - Objects in JavaScript are often used to model real-world entities such as a person, car, or any other entity that has properties and behaviors.
+ - JavaScript also has some built-in objects like Array, Date, Math. These built-in objects provide specialized functionality for specific use cases.
+ - You can access the properties and methods of an object using dot notation or bracket notation.
+
+2) How to create object:
+
+ 1) Object literal way
+ 2) Factory function
+ 3) Constructor function
+ 4) Classical way (ES-6)
+
+3) Objects are dynamic:
+
+ You can add, modify, or delete properties and methods of an object at runtime, making objects dynamic and flexible in JavaScript.
+
+ -add
+ -update
+ -delete
+
