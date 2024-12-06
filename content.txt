@@ -556,7 +556,7 @@ In the case of arrow functions, if they are defined within another function, the
 
    2) apply method => apply method changes this reference, we have to pass all arguments in array.
 
-   3) bind method =>  Same as call method but it does not call function, it returns function                             reference we have to call function again.
+   3) bind method =>  Same as call method but it does not call function, it returns function reference we have to call function again.
 
    ES-6
    ----
@@ -592,8 +592,7 @@ So, to answer your question, the this reference in an arrow function within a co
 -------
 
     =>An IIFE is a way to excute functions immediately as soon as they are created.
-    =>The most usecase of an IIFE is to restrict the scope of variables to local so
-      that they don't pollute the global context(scope).
+    =>The most usecase of an IIFE is to restrict the scope of variables to local so that they don't pollute the global context(scope).
     =>It helps in making our variables and methods private.
     =>Any function or variable defined inside IIFE can not be accessed outside of
       the IIFE block, thus preventing global scope from getting polluted.
@@ -639,7 +638,7 @@ So, to answer your question, the this reference in an arrow function within a co
 7) Recursion function:
 ---------------------
 
- - A function that calls itself is recursion. Recursion in JavaScript is a recursive call of the function to itself, where the function calls itself, again and again, (recursively) until given    condition becomes false.
+ - A function that calls itself is recursion. Recursion in JavaScript is a recursive call of the function to itself, where the function calls itself, again and again, (recursively) until given condition becomes false.
 
 calculate factorial:
 
@@ -683,4 +682,401 @@ console.log(result);
  -add
  -update
  -delete
+
+ 4) Iterating object:
+
+  - for in loop 
+
+  - Object.keys/ Object.entries /Object.values
+
+    Object.keys => This method will create array with looped keys in object.
+    Object.values => This method will create array with looped values in object.
+    Object.entries => This method will create array with looped keys and values in object.
+
+5) Copy primitives and reference types:
+
+   =>primitives copy
+     --------------- 
+
+      By default deep copy
+
+   =>Object copy
+     -----------
+ 
+      normal copy => = (assignment operator)
+
+      swallow copy => Object.assign({}, source object) or spreed operator.
+
+      deep copy => JSON.parse(JSON.stringfy(obj)) 
+                   (it will copy only pimitives and obj, it will ignore method copy)
+
+                   cloneDeep() => lodash
+                   (it will copy all pimitives and obj and method copy)
+
+6) Math object
+--------------
+
+This is predefined object in javascript to do math related functionality.
+
+   1) min => It gives min value.
+
+   2) max => It gives max value.
+
+   3) ceil => It rounds to up value when we have float value.
+
+   4) floor => It rounds to down value when we have float value.
+
+   5) round => It rounds to up value when we have 0.5 or above and 
+               down value when we have below 0.5.
+
+   6) random => It generates random value.
+
+                - Math.random() always returns a number lower than 1.
+                
+                - Math.floor(Math.random() * 10);
+                - Returns a random integer from 0 to 9:
+     
+                - Math.floor(Math.random() * 100);
+                - Returns a random integer from 0 to 99:
+                
+   7) pow => In JavaScript, the Math.pow() function is used to calculate the power of a number. It takes two arguments: the base number and the exponent. Both Math.pow() and the exponentiation operator have the same functionality, but using the exponentiation operator can be more concise and readable in many cases.
+
+   8) sqrt => In JavaScript, the Math.sqrt() function is used to calculate the square root of a given number. It takes a single argument, which is the number whose square root you want to find.
+
+              Math.sqrt(number);
+
+
+7) Date object
+--------------
+
+This is predefined object in javascript.
+
+By using this we can create dates.
+
+
+ 1) var now = new Date()  ===> It gives current date.
+
+ 2) var x = new Date(2040, 0, 30, 9:00) ===> It is number date type we can create custom dates.
+
+ 3) var x = new Date('2040 0 30 9') ===> It is string date type we can create custom dates.
+
+
+
+8) Garbage collector
+--------------------
+
+=> In low level languages like c, c++ when we create varible we need to allocate memory to it.
+=> when we use it we have to de-allocate memory. we dont have this concept in javascript. we can easily create a variable at the time we initialized this variable the memory is automatically allocated to this variable next we can use that when we are done using we dont have to de-allocate memory. 
+=> So JS engine has garbage collector. The job of this garbage collector is to find the variable which are no longer used and then de-allocate the memory. Memory allocation and de-allocation allomatically done behind the scene you have no control on it.You cant tell garbage collector when to run and what varibales to remove from the memory.
+=> Based on some complex algorithms(mark and sweep) the garbage collector run in the background it figurs out what variables are not used and then it automatically removes from memory.
+
+
+9) Template literal (ES-6)
+-------------------------
+
+Synonyms:
+
+Template Literals
+Template Strings
+String Templates
+
+=> Template strings are a powerful feature of modern JavaScript released in ES6. 
+=> It lets you insert variables and expressions into strings without needing to 
+   concatenate + like in older versions of JavaScript. 
+=> It allows us to create strings that are complex and contain dynamic elements.
+=> Template Literals use back-ticks (``) rather than the quotes ("") to define a string.
+=> Template literals allows multiline strings.
+
+   
+ syntax:   `${}`
+
+
+
+10) String Object
+-----------------
+
+
+1) String length ===> It gives string length.
+
+
+2) Removes white spaces
+
+   =>trim()      ===> It removes white space both sides.
+   =>trimStart() ===> It removes white space at starting
+   =>trimEnd()   ===> It removes white space at ending
+
+
+3) Extracting part of string
+
+   => slice(startindex, endindex)
+   => substring(startindex, endindex)
+
+    slice()
+    -------
+
+    -The slice() method extracts a part of a string.
+
+    -The start and end parameters specifies the part of the string to extract.
+
+    -A negative number selects from the end of the string. 
+
+
+    subString()
+    ----------
+
+    -The substring() method extracts characters from start to end (exclusive).
+
+    -Start or end values less than 0, are treated as 0. It does not work for negative values.
+
+
+4) Extracting string characters.
+
+   => charAt(index) - It returns the character at specified index.
+
+   => charCodeAt(index) - It returns unicode of character at specified index.
+
+
+5) Replacing string content
+
+  => replace(exitingstring, newstring).
+  => by default replace method replaces only first match.
+  => replace method is case sensitive.
+
+   
+6) Converting to upper and lower case
+
+  => toUpperCase  ==> It converts string to UPPERCASE.
+  => toLowerCase  ==> It converts string to lowercase.
+
+
+7) To Join two or more strings.
+   
+  => we use concat() method.
+  => It is used to concat two or more strings.
+  => concat method is used instead of plus operator.
+
+
+8) String padding
+
+   =>padStart(target_length, pad_string)
+   
+   =>padEnd(target_length, pad_string)
+
+   =>target_length - The desired length of the resulting string after it has been padded.
+
+
+9) Converting string into array.
+
+   =>split('')
+
+   -The split() method splits a string into an array of substrings.
+
+   -The split() method returns the new array.
+
+   -The split() method does not change the original string.
+
+   -If (" ") is used as separator, the string is split between words.
+
+
+10) Methods for finding specific string.
+
+   =>indexOf()     ==> It gives first occurance index number. if not return -1
+   =>lastIndexOf() ==> It gives last occurance index number.if not return -1
+   =>includes()    ==> It gives true if string has that specific string.
+   =>startsWith()  ==> It gives true if it has started with same string as you asked.
+   =>endsWith()    ==> It gives true if it has ended with same string as you asked.
+
+11) repeat
+
+let text = "Hello world!";
+let result = text.repeat(2);
+
+repeat() is an ECMAScript6 (ES6) feature.
+
+The repeat() method returns a string with a number of copies of a string.
+
+The repeat() method returns a new string.
+
+The repeat() method does not change the original string.
+
+
+
+
+10) Arrays
+==========
+
+1) What is an array.
+
+ - In JavaScript, an array is a data structure used to store a collection of values. Arrays allow you to store multiple values of different types or the same type into a single variable, making it easier to manage and manipulate collections of data. Each value in an array is referred to as an "element," and each element has an associated  index, starting from 0 for the first element.
+
+   Here's how you can create an array in JavaScript:
+
+
+   Creating an array of numbers
+
+   const numbers = [1, 2, 3, 4, 5];
+
+   Creating an array of strings
+
+   const fruits = ['apple', 'banana', 'orange'];
+
+   Creating an array of mixed types
+
+   const mixedArray = [1, 'hello', true, null, undefined];
+
+   You can access elements in an array using their index:
+
+   console.log(numbers[0]); // Outputs: 1
+   console.log(fruits[1]); // Outputs: banana
+
+ - Arrays have a variety of methods that you can use to manipulate their contents, such as adding or removing elements, iterating through elements. 
+
+   Here are a few common array methods:
+
+   push: Adds an element to the end of the array.
+   pop: Removes the last element from the array.
+   shift: Removes the first element from the array.
+   unshift: Adds an element to the beginning of the array.
+   length: Returns the number of elements in the array.
+   splice(): Can be used to add, remove, or replace elements at a specific position in the array.
+   concat(): Combines two or more arrays to create a new array.
+   slice(): Creates a new array by extracting a portion of the existing array. Creates a shallow copy of a portion of an array.
+   forEach: Executes a function for each element in the array.
+   map: Creates a new array by applying a function to each element in the array.
+   filter: Creates a new array with elements that pass a test condition.
+
+
+2) adding of elements to an array
+
+   push: It adds new item to end of array.
+   unshift: It adds new item to start of array.
+   splice: It adds new item at any place in array.
+
+
+
+3) removing specific element from an array
+
+   pop: It removes end value in array.
+   shift: It removes start value in array.
+   splice: It removes value in any where in array.
+
+4) removing all elements from an array
+
+    []
+
+    length = 0
+
+    splice()
+
+5) finding of elements in an array
+
+   primitives:
+   -----------
+
+   indexOf: It finds index of value at first occurance in array. 
+            If that value is not find in array it gives -1
+
+   lastIndexOf: It finds index of value at last occurance in array. 
+                If that value is not find in array it gives -1
+
+   includes: If given is in array then it gives true as output. 
+             If given value is not found in array it gives false as output.
+
+   reference:
+   ----------
+
+   find: 
+         It finds the whether the given value is in array then it returns the same value. 
+         If the given value is not there in array then it returns undefind.
+
+   findeIndex: 
+         It finds the whether the given value is in array then it returns the index number of that value.If the given value is not there in array then it returns -1.
+    
+
+6) combining two or more arrays as one array.
+
+   1) concat() => es-5
+
+         var combineArr = arr1.concat(arr2)
+
+   2) spread operator => es-6
+
+         var combineArr = [...arr1, ...arr2]
+
+7) copy/clone an array. 
+
+   1) Normal copy => (= assignment operator)
+
+
+   2) Shallow copy 
+                  => ES-5 slice() 
+                  => ES-6 spread operator
+   3) Deep copy
+                 => without method JSON.parse(JSON.stringfy(array))
+                 => with method lodash (cloneDeep(array))
+
+1) Normal copy
+
+
+2) Shallow copy
+
+1. Using the slice() Method:
+
+ - The slice() method can be used to create a shallow copy of an array. It takes two optional arguments: the starting index and the ending index. If no arguments are provided, it copies the entire array.
+
+
+    const originalArray = [1, 2, 3, 4, 5];
+    const shallowCopy = originalArray.slice();
+
+2. Using the Spread Operator ([...]):
+
+ - The spread operator allows you to create a shallow copy of an array in a concise way.
+
+    const originalArray = [1, 2, 3, 4, 5];
+    const shallowCopy = [...originalArray];
+
+ - Both of these methods create a new array that contains the same elements as the original array. However, keep in mind that the elements themselves are still references to the same objects. If the array contains objects or arrays, changes made to those objects or arrays will be reflected in both the original array and the shallow copy.
+
+    const originalArray = [{ value: 1 }, { value: 2 }, { value: 3 }];
+    const shallowCopy = originalArray.slice();
+
+    shallowCopy[0].value = 100;
+
+    console.log(originalArray[0].value);  // Output: 100
+    console.log(shallowCopy[0].value);     // Output: 100
+
+ - As seen in the example, modifying an object within the shallow copy also affects the               corresponding object in the original array. If you need to create an independent copy where        changes to one array don't affect the other, you would need a deep copy.
+
+3) Deep copy
+
+ - you can create a deep copy of an array using the lodash library in JavaScript. Lodash provides a convenient method called _.cloneDeep() that allows you to create a deep copy of an array or any nested data structure, handling all the complexities of deep copying effectively.
+
+ - cloneDeep() function from the lodash library takes care of creating a complete and independent copy of the array and its nested elements, ensuring that modifications to the deep copy do not affect the original array.
+
+
+8) iterating of elements in an array
+
+   1) for of:
+
+       =>for of loop iterates an array values only.
+
+   2) forEach:
+
+      =>The forEach() method calls a function for each element in an array.
+
+      =>forEach() method is used to loop through values and index of an array.
+        forEach method does not return any value. It returns undefined.
+
+       
+
+9) Joining of an array
+
+   join()
+
+      =>The join() method returns an array as a string.
+
+      =>The join() method does not change the original array.
+
+      =>Any separator can be specified. The default is comma (,).
+
 
