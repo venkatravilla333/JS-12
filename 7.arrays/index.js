@@ -151,16 +151,134 @@
 
 //how to convert array into string
 
-var arr = [1, 2, 3, 4, 5]
-console.log(arr, typeof arr)
-console.log(Array.isArray(arr))
+// var arr = [1, 2, 3, 4, 5]
+// console.log(arr, typeof arr)
+// console.log(Array.isArray(arr))
 
-var str = arr.join('*')
-console.log(str, typeof str)
+// var str = arr.join('*')
+// console.log(str, typeof str)
 
-var myArr = str.split()
-console.log(myArr, typeof myArr)
-console.log(Array.isArray(myArr))
+// var myArr = str.split()
+// console.log(myArr, typeof myArr)
+// console.log(Array.isArray(myArr))
+
+//testing of array items
+
+// let arr = [1, 2, 3, 4, 5]
+
+// let someRes = arr.some((item) => {
+//  return item > 5
+// })
+
+// console.log(someRes)
+
+// let everyRes = arr.every((item) => {
+//  return item > 0
+// })
+
+// console.log(everyRes)
+
+//filter array items
+
+// let arr = [1, 2, 3, 4, 5]
+
+// let filetRes = arr.filter((item) => {
+//   return item > 2
+// })
+
+// console.log(arr)
+// console.log(filetRes)
+
+//map method
+
+// let arr = [1, 2, 3, 4, 5]
+
+// let mapRes = arr.map((item) => {
+//   return item*100
+// })
+
+// console.log(arr)
+// console.log(mapRes)
+
+// let foreachRes = arr.forEach((item) => {
+//    return  item*100
+// })
+// console.log(foreachRes)
+
+//reduce method
+
+// let arr = [1, 2, 3, 4, 5]
+// let reduceRes = arr.reduce((cum, cur) => {
+//   // console.log(cum, cur)
+//   console.log(cum, cur)
+//   return cum + cur
+// }, 100)
+
+// console.log(reduceRes)
+
+
+// how to remove duplicate items from array
+
+// let arr = [1, 2, 3, 2, 4, 5, 2]
+
+//Set with spread operator
+
+// let uniqueArr = [...new Set(arr)]
+
+// console.log(arr)
+// console.log(uniqueArr)
+
+//indexOf
+
+// let uniqueArr = []
+
+// function removeDupliate(arr) {
+//   console.log(arr)
+//   for (var value of arr) {
+//     console.log(value)
+//     if (uniqueArr.includes(value) == false) {
+//       uniqueArr.push(value)
+//     }
+
+//   }
+// }
+
+// removeDupliate(arr)
+
+// console.log(uniqueArr)
+
+
+//How to flatten array
+
+// let arr = [1, 2, [3, 4], [5, 6, [7, 8],]]
+
+// console.log(arr)
+
+
+// let flattenArr = arr.flat(Infinity)
+// let flattenArr = arr.flat(2)
+// console.log(flattenArr)
+
+//Array.isArray()
+
+// let flattenArr = []
+
+// function flatteningFun(arr) {
+//   console.log(arr)
+//   for (var value of arr) {
+//     console.log(value)
+//     if (Array.isArray(value)) {
+//       flatteningFun(value)
+//     } else {
+//       flattenArr.push(value)
+//     }
+//   }
+// }
+
+// flatteningFun(arr)
+
+// console.log(flattenArr)
+
 
 
 
