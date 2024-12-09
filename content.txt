@@ -1045,7 +1045,7 @@ The repeat() method does not change the original string.
     console.log(originalArray[0].value);  // Output: 100
     console.log(shallowCopy[0].value);     // Output: 100
 
- - As seen in the example, modifying an object within the shallow copy also affects the               corresponding object in the original array. If you need to create an independent copy where        changes to one array don't affect the other, you would need a deep copy.
+ - As seen in the example, modifying an object within the shallow copy also affects the corresponding object in the original array. If you need to create an independent copy where changes to one array don't affect the other, you would need a deep copy.
 
 3) Deep copy
 
@@ -1080,3 +1080,133 @@ The repeat() method does not change the original string.
       =>Any separator can be specified. The default is comma (,).
 
 
+10) testing of an array elements
+
+    1) some():
+
+    =>some method in JavaScript is used to check whether at least one of the elements of the array satisfies the given condition or not. 
+    =>The only difference is that the some() method will return true if any predicate is true while every() method will return true if all predicates are true. 
+    
+    2) every():
+
+    =>every method in JavaScript is used to check whether all the elements of the array satisfy the given condition or not. 
+    =>The output will be false if even one value does not satisfy the element, 
+      else it will return true, and it opposes the some() function.
+
+11) filtering of array
+
+    filter()
+
+       =>The filter() method creates a new array filled with elements that pass a test provided by a function.
+       =>The filter() method does not execute the function for empty elements.
+       =>The filter() method does not change the original array.
+
+12) Sorting of an array
+
+   1) Ascending order
+
+   2) Descending order
+
+    primitives:
+    ---------
+    sort()
+    reverse()
+
+    reference:
+    ---------
+    sort + comparison function
+
+    => nested for loop
+
+
+13) mapping of array
+
+    map()
+
+      =>The map() method will loop the array items.  
+      =>It returns new array with transforming values.
+      =>It does not change original array. 
+
+14) reduce of array
+
+    reduce()
+
+    =>The reduce() method executes a reducer function for array element.
+
+    =>The reduce() method returns a single value: the function's accumulated result.
+
+    =>The reduce() method does not change the original array.
+
+
+15) Flattening of array(converting multi dimensional array into single dimension array).
+
+    1) flat() method
+
+    2) Array.isArray() 
+
+
+16) How to remove dulpicate elements in an array. 
+
+    1) Set with spread operator
+   
+    2) indexOf() 
+
+
+17) map() vs forEach()
+    -----------------
+
+  - The map() method returns a new array, whereas the forEach() method does not return a new array
+
+  - The map() method is used to transform the elements of an array, whereas the forEach() method is used to loop through the elements of an array.
+
+
+18) Array.from()
+    ------------
+
+ - The Array.from() method returns an array from any object with a length property.
+
+ - The Array.from() method returns an array from any iterable object.
+
+ - Array.from() is an ECMAScript6 (ES6) feature.
+
+ - Array.from(object, ()=>{} )
+
+ - object: This parameter holds an object that will convert into an array.
+
+
+This method can create an array from:
+
+-array-like objects - The objects that have length property and have indexed elements like String.
+-Iterable objects like Map or Set.
+
+Return Value
+
+-Returns a new Array instance.
+
+
+The Array.from() method, which is new in ES6, creates a new instance of the Array from an object that acts like an array or is iterable. The syntax for the Array.from() method is shown below:
+
+Array.from(target [, mapFn[, thisArg]])
+
+target is an object to be converted into an array that is iterable or array-like.
+The map function, or mapFn, should be used on each element of the array.
+The value used to call the mapFn method is thisArg. A new instance of Array is returned by the Array.from() method, and it contains every element of the source object.
+
+19) at()
+
+The at() method takes an integer value and returns the item at that index, allowing for positive and negative integers. Negative integers count back from the last item in the array.
+
+
+20) fill()
+
+
+The fill() method in JavaScript is used to fill all the elements of an array from a start index to an end index with a static value.
+It mutates the original array and returns the modified array.
+
+arr.fill(value, startIndex, endIndex)
+
+
+21) Array.isArray()
+
+
+The Array.isArray() static method determines whether the passed value is an Array or not.

@@ -3,6 +3,8 @@
 //how add new items to array
 
 
+
+
 // let arr = [1, 2, 3, 4, 5]
 // console.log(arr)
 // console.log(arr[0])
@@ -278,6 +280,153 @@
 // flatteningFun(arr)
 
 // console.log(flattenArr)
+
+//Array.isArray()
+
+// var x = []
+
+// console.log(Array.isArray(x))
+
+//at method
+
+// var arr = [1, 2, 3, 4, 5]
+
+// console.log(arr.at(0))
+// console.log(arr.at(1))
+// console.log(arr.at(2))
+// console.log(arr.at(-1))
+// console.log(arr.at(-2))
+
+//array.fill()
+
+// var arr = [1, 2, 3, 4, 5]
+
+// arr.fill(100, 2, arr.length)
+// console.log(arr)
+
+//Array.from()
+
+// var arr = [1, 2, 3, 4, 5]
+
+
+// function test() {
+//   console.log(arguments)
+//   console.log(Array.isArray(arguments))
+//   let res = Array.from(arguments)
+//   console.log(res)
+//   console.log(Array.isArray(res))
+// }
+
+// test(1, 2, 3, 4, 5)
+
+// let myMap = new Map()
+// myMap.set('name', 'kohli')
+
+// console.log(myMap)
+// console.log(Array.isArray(myMap))
+
+// let res = Array.from(myMap)
+// console.log(res)
+// console.log(Array.isArray(res))
+
+// let obj = { length: 10 }
+
+// let res = Array.from(obj.length)
+// console.log(res)
+
+
+//copy
+
+
+
+// let originalArr = ['sachin', { road: 101 },function play() { }]
+
+// let copiedArr = originalArr //normal copy
+// let copiedArr = JSON.parse(JSON.stringify(originalArr)) //deep copy
+// let copiedArr = lodash.cloneDeep(originalArr) //deep copy
+
+// let copiedArr = Object.assign([], originalArr) //shallow copy
+// let copiedArr = originalArr.slice() //shallow copy
+// let copiedArr = [...originalArr]//shallow copy
+
+// copiedArr[0] = 'kohli'
+// copiedArr[1].road  = 201
+
+// console.log(originalArr)
+// console.log(copiedArr)
+
+
+//sorting
+
+let arr = [2, 8, 3, 1, 5]
+// let arr = [2, 8, 3, 10, 5]
+// let arr = ['sachin', 'kohli', 'dhoni', 'hari']
+// let arr = [{course: 'react'}, {course: 'node'}, {course: 'css'}]
+
+
+
+// let asc = arr.sort()
+// console.log(asc)
+// let dsc = arr.reverse()
+// console.log(dsc)
+
+// let asc = arr.sort((a,b) => {
+//   return a - b
+// })
+
+// let dsc = arr.sort((a,b) => {
+//   return b - a
+// })
+
+// console.log(asc)
+// console.log(dsc)
+
+// let asc = arr.sort()
+
+// let dsc = asc.reverse()
+
+// console.log(asc)
+// console.log(dsc)
+
+// let asc = arr.sort((a, b) => {
+//   if (a.course > b.course) {
+//     return 1
+//   }
+
+//   if (a.course < b.course) {
+//     return -1
+//   }
+// })
+
+// let dsc = arr.sort((a, b) => {
+//   if (a.course > b.course) {
+//     return -1
+//   }
+
+//   if (a.course < b.course) {
+//     return 1
+//   }
+// })
+// console.log(asc)
+// console.log(dsc)
+
+
+for (var i = 0; i < arr.length; i++){
+  console.log(i)
+  for (var j = i + 1; j < arr.length; j++){
+    console.log(i, j)
+    if (arr[i] < arr[j]) {
+      var temp = arr[i]
+      arr[i] = arr[j] 
+      arr[j] = temp
+    }
+  }
+}
+
+console.log(arr)
+
+
+
 
 
 
