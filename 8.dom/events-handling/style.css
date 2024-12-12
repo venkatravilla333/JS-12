@@ -1,0 +1,15 @@
+#parent{
+  width: 300px;
+  height: 300px;
+  background-color: aqua;
+}
+#child{
+  width: 200px;
+  height: 200px;
+  background-color: rgb(255, 0, 0);
+}
+#subchild{
+  width: 100px;
+  height: 100px;
+  background-color: rgb(5, 17, 241);
+}
