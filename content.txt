@@ -1210,3 +1210,443 @@ arr.fill(value, startIndex, endIndex)
 
 
 The Array.isArray() static method determines whether the passed value is an Array or not.
+
+
+11) DOM
+   =====
+
+1) What is DOM?
+
+  - DOM stands for Document Object Model. It is a programming interface for web documents, primarily used to access and manipulate the content and structure of web pages. The DOM represents the page as a tree-like structure where each element on the web page, such as HTML tags, text, and attributes, is treated as an object in the tree.
+
+    Here are some key points about the DOM:
+
+  - The DOM represents the structure of HTML document as a tree, where each node in the tree corresponds to an element or part of the document.
+ 
+  - The DOM is dynamic, You can use JavaScript to interact with the DOM, change content, add or remove elements, and respond to user actions.
+
+  - The DOM allows you to attach event listeners to elements on a web page so that you can respond to user interactions like clicks, mouse movements, and keyboard input.
+
+  - Web browsers use the DOM to render web pages. When a web page is loaded, the browser parses the HTML and constructs the DOM tree, which it uses to display and render the page.
+
+
+  - Here's a simple example in JavaScript of how you can use the DOM to manipulate a web page:
+
+  - Get a reference to an DOM element with an 'id' attribute of 'myId'
+
+    var element = document.getElementById("myId");
+
+  - Change the text content of the element
+
+    element.textContent = "Hello, World!";
+
+  - Add a new element to the page
+
+    var newElement = document.createElement("p");
+
+    newElement.textContent = "This is a new paragraph.";
+
+    document.body.appendChild(newElement);
+
+    In this example, we use the DOM to select an element with the ID "myId" change its text content, and create a new paragraph element that is appended to the document body. This demonstrates how the DOM can be used to manipulate the content a web page dynamically.
+
+
+
+2) How to examine DOM 
+
+   console.dir(document) => It gives whole DOM with lot of properties.
+
+
+3) How to read DOM properties 
+
+   document.propertyname => We can read DOM properties by using dot operator or []
+
+
+4) How to select DOM elements
+
+    => id
+    
+     var para1 = document.getElementById('one');
+
+    => class
+
+     var x = document.getElementsByClassName('one');
+
+    => tag
+    
+     var x = document.getElementsByTagName('p');
+
+    => querySelector
+
+     var x = document.querySelector('#one');
+     var x = document.querySelector('.one');
+     var x = document.querySelector('p');
+
+    => querySelectorAll
+
+     var x = document.querySelectorAll('#one');
+     var x = document.querySelectorAll('.one');
+     var x = document.querySelectorAll('p');
+
+  Note: By using id we can get only one element. id is unique.(single element as result) 
+        By using querySelector we can get first element only.(single element as result)
+        By using className we will get html collection in array.
+        By using tagName we will get html collection in array.
+        By using querySelectorAll we will get node list in array.
+
+
+5) Traversing of DOM
+
+    element to parent
+    -----------------
+
+               => element.parentElement
+
+    element to child
+    ----------------
+
+               => element.firstElementChild
+
+               => element.lastElementChild
+
+               => element.children
+
+    element to siblings
+    -------------------
+               => element.previousElementSibling
+
+               => element.nextElementSibling 
+
+6) Adding / removing / replacing DOM elements
+
+   
+   1) Adding
+      ------
+      parent.appendChild(child)
+
+      parent.insertBefore(new child, existing child)
+
+   2) Replacing
+      ---------
+      parent.replaceChild(new child, existing child)
+
+   3) Remove
+      ------
+      element.remove()
+
+      parent.removeChild(child)
+    
+     
+
+7) Adding events to DOM elements from Javascript.
+
+
+    var button = document.getElementById('btn')
+
+
+    DOMelement.addEventListener('eventname', function(event handler), false/true)
+                  
+    - false: Bubling phase
+
+    - true: Capturing phase
+
+
+
+8) Events handling in JS.
+   
+
+   1) Event bubling:
+   -----------------
+  
+   - Event bubbling means propagation of an event is done from child element to ancestor elements in the DOM. 
+   - When an event happens on an element, event first runs the handlers on it, then on its parent, then all the way up on other ancestors. Propagation path is bottom to top. 
+                 
+   2) Event capturing: 
+   -------------------
+
+   - Event capturing means propagation of event is done from ancestor elements to child element in the DOM. Propagation path is top to bottom.
+                   
+   3) Event deligation: 
+   --------------------
+ 
+   - Event delegation in JavaScript is a pattern that efficiently handles events. 
+   - Events can be added to a parent element instead of adding to every single child element. 
+   - It refers to the process of using event propagation to handle events at 
+     a higher level in the DOM than the element on which the event originated. 
+   - when you click the td, the event bubbles up to the table which handles the event.
+
+    Why Event Delegation?
+    --------------------
+
+   - It is useful because the event can be listened to on multiple elements by using just one event handler. 
+   - It also uses less memory and gives better performance. 
+   - Apart from this,it also requires less time for setting up the event handler on element.
+
+
+
+9) How to improve JS app performance when we fire event in app:
+
+    
+   1) Normal event: It is about firing event every time.
+
+   2) Throttling event: Throtteling is about firing event after every certain time.
+
+   3) Debouncing event: Debouncing is about firing event after every certain time, provided in between there was no event firing.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+       div{
+           width: 500px;
+           height: 500px;
+           background-color:cornflowerblue;
+           border: 1px solid rgb(0, 26, 255);
+           margin: auto;
+           text-align: center;
+           align-items: center;
+       }
+       h2{
+           color: white;
+           vertical-align: middle;
+           font-size: 40px;
+           font-family:monospace
+       }
+       body{
+           margin: 100px;
+       }
+   </style>
+</head>
+<body>
+    <div onmousemove="showCounts()">
+        <h2 id="nCnt">Normal Count: 0</h2>
+        <h2 id="tCnt">Throttle Count: 0</h2>
+        <h2 id="dCnt">Debounce Count: 0</h2>
+    </div>
+    <script>
+        let nCnt=0;
+        let tCnt=0;
+        let dCnt=0;
+        let nh2 = document.getElementById("nCnt");
+        let th2 = document.getElementById("tCnt");
+        let dh2 = document.getElementById("dCnt");
+        let fireThrottle=true;
+        let dTimer;
+        function showCounts(){
+            normalCount();
+            throttleCount();
+            debounceCount();
+        }
+        function normalCount(){
+            nCnt++;
+            nh2.innerHTML = "Normal Count: " + nCnt;
+        }
+        function throttleCount(){
+            if(fireThrottle===true){
+                tCnt++;
+                th2.innerHTML = "Throttle Count: " + tCnt;
+                fireThrottle=false;
+                setTimeout(function(){
+                    fireThrottle=true;
+                },200)
+   
+            }
+        }
+
+        function debounceCount(){
+           
+            window.clearInterval(dTimer);
+             dTimer =  window.setTimeout(function(){
+                dCnt++;
+                dh2.innerHTML = "Debounce Count: " + dCnt;
+             },200);
+   
+        }
+    </script>
+</body>
+</html>
+
+
+12) Asyncronous JS
+==================
+
+
+Synchronous JavaScript:
+----------------------
+As the name suggests synchronous means to be in a sequence, i.e. every statement of the JS code gets executed one by one. So, basically a statement has to wait for the earlier statement to get executed.
+
+Let us understand this with the help of an example.
+
+    console.log("Hi"); // First
+  
+    document.write("Hari") ;// Second
+     
+    document.write("How are you"); // Third
+
+In the above code snippet, the first line of the code 'Hi' will be logged first then the second line 'Hari' will be logged and then after its completion, the third line would be logged 'How are you'.
+So as we can see the codes work in a sequence. Every line of code waits for its previous one to get executed first and then it gets executed.
+
+Asynchronous JavaScript:
+----------------------- 
+Asynchronous code allows the program to be executed immediately where the synchronous code will block further execution of the remaining code until it finishes the current one. This may not look like a big problem but when you see it in a bigger picture you realize that it may lead to delaying the User Interface.
+
+    console.log("Hi");
+    
+    setTimeout(() => {
+        console.log("Hello here what is go to happen");
+    }, 2000);
+  
+    console.log("End");
+
+
+ - So, what the code does is first it logs in 'Hi' then rather than executing the setTimeout function it logs 'End' and then it runs the setTimeout function. At first, as usual, the 'Hi'statement got logged in. As we use browsers to run JavaScript, there are the web APIs that handle these things for users.
+ 
+ - So, what JavaScript does is, it passes the setTimeout function in such web API and then we keep on running our code as usual. So it does not block the rest of the code from executing and after all the code its execution, it gets pushed to the call stack and then finally gets executed. This is what happens in asynchronous JavaScript.
+
+
+// console.log('Hello');
+
+// setTimeout(() => {
+//   console.log('one');
+// }, 4000);
+
+// Promise.resolve()
+//   .then(() => console.log('PR-1'))
+//   .then(() => console.log('PR-2'));
+
+// console.log('bye');
+
+// setTimeout(() => {
+//   console.log('two');
+// }, 0);
+
+
+
+   1) Callback functions
+   ---------------------
+
+    - A JavaScript callback is a function which is to be executed after another function has finished execution. 
+    - A more formal definition would be - Any function that is passed as an argument to another function so that it can be executed in that other function is called as a callback function.     
+    - When we have to process the data further then callback syntax will create callback hell situation. we can not read the callback code.
+    
+      Why use callback function in JavaScript?
+
+      Asynchronous programming: 
+
+    - Callbacks are used to handle the results of asynchronous operations, which means that the operation does not block the execution of the rest of the program. 
+    - Instead, the program continues to run and the callback function is executed when the operation is complete.
+
+   2) Promises
+      --------
+
+   - Promises are a way to implement asynchronous programming in JavaScript(ES6). 
+     A Promise acts as a container for future values.
+
+   - A promise is a JavaScript object that allows you to make asynchronous calls. It produces a value when the async operation completes successfully or produces an error if it doesn't complete.
+ 
+   - let promise = new Promise(function(resolve, reject) { Do something and either resolve or reject})
+
+   - Promise has 3 states 1) pending 2) success 3) failure.
+
+
+    a) Promise.all()
+       -------------
+
+       Promise.all() will reject as soon as one of the Promises in the array rejects.
+
+    b) Promise.allSettled()
+       -------------------
+
+      - whereas Promise.allSettled() waits for all the promises to settle (either resolve or reject) before returning an array of objects representing each promise's outcome.
+
+      - Promise.allSettled will never reject - it will resolve once all Promises in the array have either rejected or resolved.
+
+    c) Promise.race() 
+       --------------
+
+      - The Promise.race() method returns a promise as soon as  that fulfills or rejects, with the value or reason from that promise.
+      - It returns the winning promise only.
+
+example:
+ 
+  var p1 = new Promise((res, rej) => {
+  setTimeout(() => {
+    res('pr-1');
+  }, 3000);
+  });
+
+  var p2 = new Promise((res, rej) => {
+  setTimeout(() => {
+    res('pr-2');
+  }, 2000);
+  });
+
+  var p3 = new Promise((res, rej) => {
+  setTimeout(() => {
+    res('pr-3');
+  }, 5000);
+  });
+
+  Promise.all([p1, p2, p3]).then((res) => {
+   console.log(res);
+  });
+
+  Promise.allSettled([p1, p2, p3]).then((res) => {
+    console.log(res);
+  });
+
+  Promise.race([p1, p2, p3]).then((res) => {
+    console.log(res);
+  });
+
+
+   3) async and await
+   ------------------
+
+    - Async and await are built on promises. The keyword “async” accompanies the function, indicating that it returns a promise. 
+    - Within this function, the await keyword is applied to the promise being returned. 
+    - The await keyword ensures that the function waits for the promise to resolve.
+
+
+API CALLS
+=========
+
+The fetch() method in JavaScript is used to request data from a server. The request can be of any type of API that returns the data in JSON . The fetch() method requires one parameter, the URL to request, and returns a promise.
+
+api for the get request:
+
+  fetch('url')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+
+URL: It is the URL to which the request is to be made.
+
+Return Value: 
+
+It returns a promise whether it is resolved or not. The return data can be of the JSON format. It can be an array of objects or simply a single object.
+
+NOTE: Without options, Fetch will always act as a get request.
+
+
+Making Post Request using Fetch:
+-------------------------------
+ 
+Post requests can be made using fetch by giving options as given below:
+
+var obj = {
+  userId: 101,
+  title: 'my title',
+  body: 'my body',
+};
+
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify(obj),
+}).then((res) => {
+  console.log(res);
+});
