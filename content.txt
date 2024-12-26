@@ -1850,3 +1850,96 @@ Note: We have to do extra 2 tasks 1) type: "module" 2) add .js to file extension
      - The data is deleted when the browser window is closed.
     
      - The storage capacity of session storage is 5MB
+
+
+     
+13) iterators and generators
+ ===========================
+
+  - Iterator is a new concept introduced in ES-6. It's a kind of new mechanism to iterate or traverse through data structures. 
+  - Arrays, strings, Maps, Sets all these data collections are iterable.
+
+  Iterable:(object)
+  -------- 
+   An iterable is any object that impliments a method whose key is symbol.iterator 
+   and symbol.iterator method is going return an iterator object.
+
+  Iterator:(object) It returns by symbol.iterator()
+  --------
+  - What is an iterator? An iterator is an object that is going to impliment next method.
+  - This next method knows how to access elements in a collection , next method returns an object(IteratorResult object).
+  - That IteratorResult object contains two properties {value: any datatype, done: boolean}
+
+
+
+var iterable = [1, 2, 3, 4, 5];
+
+let iterator = iterable[Symbol.iterator]();
+console.log(iterator);
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterable.next());
+
+let person = {
+  fname: 'Hari',
+  lname: 'Ravilla',
+};
+
+person[Symbol.iterator] = function () {
+  var properties = Object.keys(person);
+  var count = 0;
+  var next = () => {
+    if (count >= properties.length) {
+     return {done: true: value: undefined}
+    }
+    return { done: false, value: this[properties[count++]] };
+  };
+  return { next };
+};
+
+for (var v of person) {
+  console.log(v);
+}
+
+
+
+
+  By default iterable data structures
+  -----------------------------------
+
+   -array
+   -Map
+   -Set
+   -String obj
+   -Generator object
+   -arguments object
+
+
+  By default not iterable data structures
+  ---------------------------------------
+
+   -object
+
+
+Generator:
+---------
+
+ -Generators can help you to pause & resume the code.
+ -It is a function which can return multiple values in phases.
+ -The function* is the keyword used to define a generator function.
+ -Yield is an operator which pauses the generator. 
+ -Yield itself is capable of returning any value.
+ -Genarators are iterable.
+ -Next () method returns an object, which has two keys.
+   1) value
+   2) boolean
+ -Generator function returns an itarator object.
+ -To excute generator function we have to call next() method.
+ -When you want to come out of generator function or terminate it you can write return()method, 
+  Writing yield inside finally will not allow the return() to terminate gen function. 
+
+Note: When a generator function is called, it does not call the function instead it returns a generator object.
+Note: next method will start the excution till the yield operator. Next method returns an object which has two keys {value: any datatype, done: true/false}
