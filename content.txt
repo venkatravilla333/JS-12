@@ -2216,3 +2216,53 @@ Truthy values and falsy values in javascript
 => ({});            // true
 => ({ a: 1 });      // true
 
+
+11) Changing of "this" reference.
+   
+We can change reference of "this" by using below methods.
+
+Arrow functions do not have their own this context; instead, they inherit this from the lexical context. 
+
+So, the use of this in an arrow function will reference the this value of the enclosing lexical scope, whether it's the global scope (e.g., window in a browser) or a function scope.
+
+In the case of arrow functions, if they are defined within another function, they inherit the this value from that surrounding function's context, not from the context where they are called.
+
+    
+    ES-5 
+    ----
+
+   1) call method =>  call method changes this reference, we can pass any no of arguments  to function.
+
+   2) apply method => apply method changes this reference, we have to pass all arguments in array.
+
+   3) bind method =>  Same as call method but it does not call function, it returns function reference we have to call function again.
+
+   ES-6
+   ----
+
+   4) arrow function => This is the ultimate approach for changing this reference. Arrow funtion get the inherited this value from parent function.
+
+
+
+In JavaScript, when you use an arrow function within a constructor function, the this reference in the arrow function will still refer to the surrounding lexical context rather than the instance of the object created by the constructor.
+
+function Person(name) {
+  this.name = name;
+
+  // Arrow function within the constructor
+
+  this.printName = () => {
+    console.log("My name is " + this.name);
+  };
+}
+
+const person = new Person("sachin");
+person.printName(); // Outputs: My name is sachin
+
+
+printName is an arrow function defined within the constructor Person.
+
+When printName is called on an instance of Person (person in this case), this.name still correctly refers to the name property of the instance created (sachin in this case). This is because arrow functions inherit the this value from their surrounding lexical context, which in this case is the constructor function Person.
+So, to answer your question, the this reference in an arrow function within a constructor function in JavaScript still points to the same this as the constructor function itself, meaning it refers to the instance being created by the constructor.
+
+
