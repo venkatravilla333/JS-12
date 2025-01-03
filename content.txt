@@ -2266,3 +2266,553 @@ When printName is called on an instance of Person (person in this case), this.na
 So, to answer your question, the this reference in an arrow function within a constructor function in JavaScript still points to the same this as the constructor function itself, meaning it refers to the instance being created by the constructor.
 
 
+
+23) Data structures
+    ===============
+
+In JavaScript, keys of objects are always strings or symbols. Even if you use a number as a key, it gets converted to a string. Here's an example to illustrate this:
+
+let obj = {
+  name: "Alice",
+  age: 25,
+  1: "one",
+  true: "boolean",
+  null: "null",
+  undefined: "undefined",
+  symbolKey: Symbol("symbolValue")
+};
+
+for (let key in obj) {
+  console.log(`${key}: ${typeof key}`);
+}
+
+
+In this example, even though some keys appear to be numbers, booleans, null, or undefined, they are all converted to strings. The output will be:
+
+1: string
+name: string
+age: string
+true: string
+null: string
+undefined: string
+symbolKey: string
+
+Symbols are a special case. If a symbol is used as a key, it does not show up in a regular for...in loop or Object.keys() method. To handle symbols, you can use Object.getOwnPropertySymbols.
+
+Here's how you can identify both string and symbol keys in an object:
+
+let obj = {
+  name: "Alice",
+  age: 25,
+  [Symbol("symbolKey")]: "symbolValue"
+};
+
+// Check string keys
+
+for (let key in obj) {
+  console.log(`${key}: ${typeof key}`);
+}
+
+// Check symbol keys
+
+let symbolKeys = Object.getOwnPropertySymbols(obj);
+for (let sym of symbolKeys) {
+  console.log(`${sym.toString()}: ${typeof sym}`);
+}
+
+
+In summary, JavaScript object keys are either strings or symbols. Regular object keys (including those that look like numbers or booleans) are converted to strings, and symbol keys need to be handled separately using Object.getOwnPropertySymbols().
+
+
+
+When to use map:
+---------------
+
+With map, you can use any type (and values) as keys.
+Map provides better performance for large quantities of data.
+Use a map for better performance when adding and removing data frequently.
+
+When to use an object:
+---------------------
+
+Objects can only use strings, and symbols as keys.
+Objects are perfect for small to medium-sized sets of data.
+Objects have better performance and are easier to create.
+
+
+map
+---
+
+Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
+
+1) how to create empty
+   -------------------
+
+var obj = {}
+
+var map = new Map(); 
+
+2) how to initialize with values 
+   -----------------------------
+
+var obj = {name: 'sachin', age: 40}
+
+const map = new Map([ [ 'one', 1 ], [ 'two', 2 ] ]);
+
+3) how to add new properties
+   -------------------------
+
+obj[color] = 'red'
+obj.color = 'red' 
+
+map.set(key, value) -- stores the value by the key.
+
+4) how to get or access values
+   ---------------------------
+
+obj.key
+obj['key']
+
+map.get(key) -- returns the value by the key, undefined if key doesn't exist in map.
+
+5) how to check specific key is there
+   ----------------------------------
+
+The "in" operator checks if a key exists in the object, including keys from the prototype chain.
+
+The "hasOwnProperty" method checks if a key exists directly on the object, not considering keys from the prototype chain.
+
+console.log('name' in obj)
+console.log(obj.hasOwnProperty('name'))
+
+map.has(key) -- returns true if the key exists, false otherwise.
+
+6) how to delete specific key 
+   --------------------------
+
+delete obj.name;
+
+map.delete(key) -- removes the value by the key.
+
+7) how to delete all keys
+   ----------------------
+
+
+Using a loop with the delete operator
+
+for (let key in obj1) {
+  if (obj1.hasOwnProperty(key)) {
+    delete obj1[key];
+  }
+}
+
+Setting the object to an empty object
+
+obj = {};
+console.log(obj); // {}
+
+
+map.clear() -- clears the map
+
+8) how to find length
+   ------------------
+
+alt:1
+
+let length = Object.keys(obj).length;
+
+alt:2
+
+let length = 0;
+for (let key in obj) {
+  if (obj.hasOwnProperty(key)) {
+    length++;
+  }
+}
+
+alt:3
+
+let length = Object.getOwnPropertyNames(obj).length;
+
+map.size -- returns the current element count.
+
+9) how to loop keys
+   ----------------
+alt:1
+
+for (let key in obj) {
+  if (obj.hasOwnProperty(key)) {
+    console.log(`${key}: ${obj[key]}`);
+  }
+}
+
+alt:2
+
+let keys = Object.keys(obj);
+
+for (let i = 0; i < keys.length; i++) {
+  let key = keys[i];
+  console.log(`${key}: ${obj[key]}`);
+}
+
+alt:3
+
+
+Object.keys(obj).forEach(key => {
+  console.log(`${key}: ${obj[key]}`);
+});
+
+Similar to objects, there are three methods you can use for looping over Maps:
+
+map.keys() returns an iterable containing the keys
+
+map.values() returns an iterable containing the values
+
+map.entries() returns an iterable containing the [key, value] pairs
+
+for of loop
+
+10) how to convert
+    --------------
+
+let map = new Map(Object.entries(obj));
+
+let obj = Object.fromEntries(map);
+
+11) how to destructure 
+    ------------------
+
+
+let { one, two } = obj;
+
+
+
+console.log(one) // undefined
+
+// But you can destructure it similar to an array where you destructure by the order items were added into the map
+
+let [ firstEntry, secondEntry ] = map;
+
+console.log(firstEntry) // ["one", 1]
+console.log(secondEntry) // ["two", 2]
+
+-remember the regular Object? it would convert keys to string.
+-Map keeps the type, so these two are different.
+-As we can see, unlike objects, keys are not converted to strings. Any type of key is possible.
+-Map can also use objects as keys.
+
+
+map vs weakmap 
+-------------
+
+One main difference when using a WeakMap is that the keys have to be objects, not primitive values. Which means they will pass by reference.
+
+So why use a WeakMap? The major advantage of using a WeakMap over a Map is memory benefits.
+
+Objects that are not-reachable get garbage collected, but if they exist in as a key in another reachable structure then they won't get garbage collected. Lets look at an example:
+
+
+let obj = { name: 'Matt' } // object can be accessed
+
+let obj = null // overwrite the reference, the object above will be garbage collected and removed from memory.
+
+let obj = { name: 'Matt' } // object can be accessed
+
+let map = new Map();
+map.set(obj, true);
+
+obj = null // overwrite the reference, but since it's still reachable through the map, the object will not be garbage collected
+
+WeakMap does not prevent garbage-collection of it's key objects.
+
+let obj = { name: 'Matt' } // object can be accessed
+
+let weakMap = new WeakMap();
+weakMap.set(obj, true);
+
+obj = null // overwrite the reference, the object was removed from memory
+// weakMap is now empty
+
+WeakMaps only have the following methods: get, set, delete, has.
+
+So when would you ever use a WeakMap?
+When you want to use it for additional storage that only lasts until the reference is destroyed.
+
+
+WeakMap does not support iteration and methods keys(), values(), entries(), so there's no way to get all keys or values from it.
+
+WeakMap has only the following methods:
+
+weakMap.get(key)
+weakMap.set(key, value)
+weakMap.delete(key, value)
+weakMap.has(key)
+
+
+Array vs Set
+------------
+
+Definition
+----------
+
+Array and Set both are basic data structure. But they are very different from each other.
+
+Array
+-----
+In JavaScript, array is a single variable that is used to store different elements. Array elements are indexed and ordered.
+
+Set
+---
+A JavaScript Set is a collection of unique values. Sets are unordered and not indexed
+
+how to create
+-------------
+
+Array
+-----
+To create an array in JavaScript we simply use a pair of square brackets
+const myArray = []
+We can also initialize Array with default values
+const myArray = [1, 2, 3]
+
+Set
+---
+To create a set we use the Set class.
+const mySet = new Set()
+And to initialize Set with default values:
+const mySet = new Set([1, 2, 3])
+
+How to add new items
+--------------------
+
+Array
+-----
+To add items in array we use the push method
+const myArray = []
+myArray.push(5)
+myArray.push("hello")
+
+Set
+---
+To add items in JS set we use the add method
+const mySet = new Set()
+mySet.add(5)
+mySet.add("hello")
+
+Accessing items
+---------------
+
+Array
+-----
+In js arrays are indexed. So we can use index to get the element that index. Index starts with 0 in JavaScript
+const myArray = ["hello", "there", 69, 420]
+console.log(myArray[1])
+
+Set
+---
+Unlike arrays, sets are unordered so we can't use index to get elements. However we can convert our set to array whenever needed.
+const mySet= new Set(["hello", "there", 69, 420])
+const myArray = [...mySet] // Converting set to array
+
+console.log(myArray[1])
+
+Deleting items
+--------------
+
+Array
+-----
+To remove element from array we use the splice function.
+const myArray = ["hello", "there", 69, 420]
+// Syntax: array.splice(startingIndex, number of elements to delete)
+myArray.splice(1, 1)
+
+Set
+---
+To delete item from set we use delete method.
+const mySet= new Set(["hello", "there", 69, 420])
+mySet.delete("there")
+
+Check if element exist
+----------------------
+
+Array
+-----
+We can use indexOf function to check if an item exists in array. the indexOf function returns -1 if the item doesn't exists
+
+const myArray = ["hello", "there", 69, 420]
+
+console.log(myArray.indexOf("there") > -1)
+
+Set
+---
+To check if something exists in our set we can use the has method
+const mySet= new Set(["hello", "there", 69, 420])
+
+console.log(mySet.has("there"))
+// Output: true
+
+Check size
+----------
+
+Array
+-----
+To check how many items does our array have use can simply access its length
+const myArray = ["hello", "there", 69, 420]
+
+console.log(myArray.length)
+// Output: 4
+
+Set
+---
+We can access the size property to get the size of our set.
+const mySet= new Set(["hello", "there", 69, 420])
+
+console.log(mySet.size)
+// Output: 4
+
+
+Emptying list
+-------------
+
+Array
+-----
+To empty out an array we can simple set the array to []
+// We are using let here Because we will reassign it to []
+let myArray = ["hello", "there", 69, 420]
+myArray = []
+
+console.log(myArray)
+// Output: []
+
+Set
+---
+We can use clear method to empty out set.
+const mySet= new Set(["hello", "there", 69, 420])
+mySet.clear()
+
+console.log(mySet)
+// Output: Set {}
+
+Loop through items
+------------------
+
+Array
+-----
+To loop through the items of an array in JS we can use higher order functions like map, reduce, forEach etc. or we can simply use a for of loop
+const myArray = [1, 2, 35, 4, 5]
+
+for(let item of myArray){
+  console.log(item)
+}
+/* Output:
+1
+2
+35
+4
+5
+*/
+
+Set
+---
+Just like array we can use for of loop to loop over a set also
+const mySet = new Set([1, 2, 35, 4, 5])
+
+for(let item of mySet){
+  console.log(item)
+}
+/* Output:
+1
+2
+35
+4
+5
+*/
+
+
+
+Now all the values of set have to be unique so if you try to add same items more than once it will still appear only once.
+
+The Set is also an object and keeps a value array. (without keys), where each value may occur only once.The Set is well optimized in performance to create a unique arrays.
+
+new Set(iterable) – creates the set, and if an iterable object is provided
+
+set.add(value) – adds a value, returns the set itself.
+
+set.has(value) – returns true if the value exists in the set, otherwise false.
+
+set.delete(value) – removes the value, returns true if value existed at the moment of the call, otherwise false.
+
+set.clear() – removes everything from the set.
+
+set.size – is the elements count.
+
+
+map vs weakMap
+--------------
+
+In a Weak Map, every key can only be an object and function. It is used to store weak object references.
+
+One main difference when using a WeakMap is that the keys have to be objects, not primitive values. Which means they will pass by reference.
+
+So why use a WeakMap? The major advantage of using a WeakMap over a Map is memory benefits.
+
+Objects that are not-reachable get garbage collected, but if they exist in as a key in another reachable structure then they won't get garbage collected.
+
+WeakMap does not prevent garbage-collection of it's key objects.
+
+WeakMaps only have the following methods: get, set, delete, has.
+
+It does not support for clear, size, keys, values, forEach
+
+
+set vs weekSet
+--------------
+
+It is used to store a collection of objects similar to that of set the only difference is that these values are only object and not some particular data type.
+
+Sets can store any value. WeakSets are collections of objects only.
+WeakSet does not have size property.
+WeakSet does not have clear, keys, values, entries, forEach methods.
+WeakSet is not iterable.
+
+summary
+-------
+
+-Use Map when you need to associate values with keys.
+-Use WeakMap when you want to associate values with keys and the keys should not prevent garbage   collection.
+-Use Set when you need a collection of unique values.
+-Use WeakSet when you need a collection of unique objects, and the objects should not prevent garbage collection.
+
+
+21) Optional chaining operator:
+    --------------------------
+
+Optional chaining is a feature introduced in JavaScript as part of ECMAScript 2020 (ES11) and is denoted by the ?. syntax. It provides a way to access properties of nested object even if the property does not exist. This can help prevent errors and make your code more concise and readable when dealing with potentially undefined values.
+
+
+
+
+var obj = {
+  name: 'sachin',
+  age: 40,
+  address : {road: 101}
+}
+
+// console.log(obj.address.road)
+// console.log(obj.address1.road)
+
+//es-5
+
+// console.log(obj && obj.address && obj.address.road)
+// console.log(obj && obj.address1 && obj.address1.road)
+
+// es-11
+
+// console.log(obj.address1.road) //throws error
+// console.log(obj && obj.address1 && obj.address1.road) //es-5
+// console.log(obj?.address1?.road)//es-11
+
+
+
+
+
